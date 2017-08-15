@@ -6779,3 +6779,279 @@ DEPRECATION WARNING: Using a dynamic :controller segment in a route is deprecate
 DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
 DEPRECATION WARNING: Using a dynamic :controller segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
 DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+DEPRECATION WARNING: Using a dynamic :controller segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+Started GET "/blog" for 127.0.0.1 at 2017-08-15 12:43:37 +0900
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BlogController#index as HTML
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "replies"."blog_id" AS replies_blog_id FROM "replies" GROUP BY "replies"."blog_id"[0m
+  Rendering blog/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "blogs"[0m
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 15]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 14]]
+  Rendered blog/index.html.erb within layouts/application (34.8ms)
+Completed 200 OK in 315ms (Views: 264.6ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/blog/like/14" for 127.0.0.1 at 2017-08-15 12:43:42 +0900
+Processing by BlogController#like as HTML
+  Parameters: {"id"=>"14"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 404 Not Found in 10ms (ActiveRecord: 0.6ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Blog with 'id'={:id=>"14"}):
+  
+app/controllers/blog_controller.rb:22:in `block in like'
+app/controllers/blog_controller.rb:21:in `like'
+Started GET "/blog/like/14" for 127.0.0.1 at 2017-08-15 12:44:04 +0900
+DEPRECATION WARNING: Using a dynamic :controller segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+Started GET "/blog" for 127.0.0.1 at 2017-08-15 12:44:14 +0900
+Processing by BlogController#like as HTML
+  Parameters: {"id"=>"14"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBlog Load (0.5ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 341ms (ActiveRecord: 2.0ms)
+
+
+  
+NameError (undefined local variable or method `blog' for #<BlogController:0x007ff00be41b98>
+Did you mean?  　blog):
+  
+app/controllers/blog_controller.rb:23:in `block in like'
+app/controllers/blog_controller.rb:21:in `like'
+DEPRECATION WARNING: Using a dynamic :controller segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+Processing by BlogController#index as HTML
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "replies"."blog_id" AS replies_blog_id FROM "replies" GROUP BY "replies"."blog_id"[0m
+  Rendering blog/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "blogs"[0m
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 15]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 14]]
+  Rendered blog/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 56ms (Views: 34.3ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/blog/like/14" for 127.0.0.1 at 2017-08-15 12:44:18 +0900
+Processing by BlogController#like as HTML
+  Parameters: {"id"=>"14"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 186ms (ActiveRecord: 0.4ms)
+
+
+  
+NameError (undefined local variable or method `blog' for #<BlogController:0x007ff012032438>
+Did you mean?  　blog):
+  
+app/controllers/blog_controller.rb:23:in `block in like'
+app/controllers/blog_controller.rb:21:in `like'
+Started GET "/blog/" for 127.0.0.1 at 2017-08-15 12:44:36 +0900
+DEPRECATION WARNING: Using a dynamic :controller segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+Processing by BlogController#index as HTML
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "replies"."blog_id" AS replies_blog_id FROM "replies" GROUP BY "replies"."blog_id"[0m
+  Rendering blog/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "blogs"[0m
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 15]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 14]]
+  Rendered blog/index.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 69ms (Views: 35.9ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/blog/like/14" for 127.0.0.1 at 2017-08-15 12:44:38 +0900
+Processing by BlogController#like as HTML
+  Parameters: {"id"=>"14"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 225ms (ActiveRecord: 0.3ms)
+
+
+  
+NameError (undefined local variable or method `blog' for #<BlogController:0x007ff00fe469c8>
+Did you mean?  　blog):
+  
+app/controllers/blog_controller.rb:23:in `block in like'
+app/controllers/blog_controller.rb:21:in `like'
+Started GET "/blog" for 127.0.0.1 at 2017-08-15 12:46:10 +0900
+DEPRECATION WARNING: Using a dynamic :controller segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+Processing by BlogController#index as HTML
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "replies"."blog_id" AS replies_blog_id FROM "replies" GROUP BY "replies"."blog_id"[0m
+  Rendering blog/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "blogs"[0m
+  [1m[36mBlog Load (0.1ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 15]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 14]]
+  Rendered blog/index.html.erb within layouts/application (30.2ms)
+Completed 200 OK in 129ms (Views: 75.9ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/blog/like/14" for 127.0.0.1 at 2017-08-15 12:46:14 +0900
+Processing by BlogController#like as HTML
+  Parameters: {"id"=>"14"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[33mUPDATE "blogs" SET like++ WHERE "blogs"."id" = ?[0m  [["id", 14]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 1.9ms)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: near "+": syntax error: UPDATE "blogs" SET like++ WHERE "blogs"."id" = ?):
+  
+app/controllers/blog_controller.rb:22:in `block in like'
+app/controllers/blog_controller.rb:21:in `like'
+Started GET "/blog/" for 127.0.0.1 at 2017-08-15 12:46:37 +0900
+DEPRECATION WARNING: Using a dynamic :controller segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+Processing by BlogController#index as HTML
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "replies"."blog_id" AS replies_blog_id FROM "replies" GROUP BY "replies"."blog_id"[0m
+  Rendering blog/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "blogs"[0m
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 15]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 14]]
+  Rendered blog/index.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 79ms (Views: 48.8ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/blog/like/14" for 127.0.0.1 at 2017-08-15 12:46:39 +0900
+Processing by BlogController#like as HTML
+  Parameters: {"id"=>"14"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "blogs" SET like = like + 1 WHERE "blogs"."id" = ?[0m  [["id", 14]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/blog/
+Completed 302 Found in 4ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/blog/" for 127.0.0.1 at 2017-08-15 12:46:39 +0900
+Processing by BlogController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "replies"."blog_id" AS replies_blog_id FROM "replies" GROUP BY "replies"."blog_id"[0m
+  Rendering blog/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "blogs"[0m
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 15]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 14]]
+  Rendered blog/index.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 36ms (Views: 33.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/blog/like/14" for 127.0.0.1 at 2017-08-15 12:50:25 +0900
+DEPRECATION WARNING: Using a dynamic :controller segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+Processing by BlogController#like as HTML
+  Parameters: {"id"=>"14"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 250ms (ActiveRecord: 1.8ms)
+
+
+  
+NameError (undefined local variable or method `blog' for #<BlogController:0x007ff010d3f290>
+Did you mean?  @blog):
+  
+app/controllers/blog_controller.rb:23:in `block in like'
+app/controllers/blog_controller.rb:21:in `like'
+Started GET "/blog/" for 127.0.0.1 at 2017-08-15 12:50:41 +0900
+DEPRECATION WARNING: Using a dynamic :controller segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+Processing by BlogController#index as HTML
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "replies"."blog_id" AS replies_blog_id FROM "replies" GROUP BY "replies"."blog_id"[0m
+  Rendering blog/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "blogs"[0m
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 15]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 14]]
+  Rendered blog/index.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 59ms (Views: 38.4ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/blog/like/14" for 127.0.0.1 at 2017-08-15 12:50:43 +0900
+Processing by BlogController#like as HTML
+  Parameters: {"id"=>"14"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `seve' for #<Blog:0x007ff00fc843b0>
+Did you mean?  save):
+  
+app/controllers/blog_controller.rb:24:in `block in like'
+app/controllers/blog_controller.rb:21:in `like'
+Started GET "/blog/" for 127.0.0.1 at 2017-08-15 12:50:59 +0900
+DEPRECATION WARNING: Using a dynamic :controller segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+Processing by BlogController#index as HTML
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "replies"."blog_id" AS replies_blog_id FROM "replies" GROUP BY "replies"."blog_id"[0m
+  Rendering blog/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "blogs"[0m
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 15]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 14]]
+  Rendered blog/index.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 56ms (Views: 34.1ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/blog/like/14" for 127.0.0.1 at 2017-08-15 12:51:01 +0900
+Processing by BlogController#like as HTML
+  Parameters: {"id"=>"14"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35mSQL (1.6ms)[0m  [1m[33mUPDATE "blogs" SET "like" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["like", 8], ["updated_at", "2017-08-15 03:51:01.563197"], ["id", 14]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/blog/
+Completed 302 Found in 9ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/blog/" for 127.0.0.1 at 2017-08-15 12:51:01 +0900
+Processing by BlogController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "replies"."blog_id" AS replies_blog_id FROM "replies" GROUP BY "replies"."blog_id"[0m
+  Rendering blog/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "blogs"[0m
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 15]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 14]]
+  Rendered blog/index.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 28ms (Views: 25.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/blog/like/14" for 127.0.0.1 at 2017-08-15 12:51:15 +0900
+DEPRECATION WARNING: Using a dynamic :controller segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 5.2. (called from block in <top (required)> at /Users/yoshiki/rails_blog/config/routes.rb:3)
+Processing by BlogController#like as HTML
+  Parameters: {"id"=>"14"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBlog Load (0.1ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "blogs" SET "like" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["like", 9], ["updated_at", "2017-08-15 03:51:15.584402"], ["id", 14]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/blog/
+Completed 302 Found in 19ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/blog/" for 127.0.0.1 at 2017-08-15 12:51:15 +0900
+Processing by BlogController#index as HTML
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "replies"."blog_id" AS replies_blog_id FROM "replies" GROUP BY "replies"."blog_id"[0m
+  Rendering blog/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "blogs"[0m
+  [1m[36mBlog Load (0.3ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 15]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "replies" WHERE "replies"."blog_id" = ?[0m  [["blog_id", 14]]
+  Rendered blog/index.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 34ms (Views: 26.5ms | ActiveRecord: 1.9ms)
+
+

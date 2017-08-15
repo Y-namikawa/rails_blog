@@ -19,7 +19,9 @@ class BlogController < ApplicationController
 
 	def like
 		Blog.transaction do
-		  Blog.where(id: params[:id]).update_all('like++')
+		  blog = Blog.find(params[:id])
+		  blog.like = blog.like + 1
+		  blog.save
 		end
 
 		redirect_back fallback_location: 'blog/index'
